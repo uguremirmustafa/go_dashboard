@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - pgdatadev:/var/lib/postgresql/data
+    networks:
+      - webnet
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    ports:
+      - '8081:80'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    networks:
+      - webnet
+    volumes:
+      - pgadmin-datadev:/var/lib/pgadmin
+volumes:
+  pgdatadev: {}
+  pgadmin-datadev: {}
+networks:
+  webnet:
+    driver: bridge
