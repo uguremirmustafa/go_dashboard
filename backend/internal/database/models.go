@@ -5,6 +5,7 @@
 package database
 
 import (
+	"database/sql"
 	"time"
 
 	"github.com/google/uuid"
@@ -15,4 +16,12 @@ type User struct {
 	Username  string
 	CreatedAt time.Time
 	UpdatedAt time.Time
+}
+
+type Widget struct {
+	ID          uuid.UUID
+	Name        string
+	Description sql.NullString
+	CreatedAt   time.Time
+	UpdatedAt   time.Time
 }
