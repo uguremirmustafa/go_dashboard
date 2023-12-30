@@ -1,7 +1,7 @@
-import { Setting } from '../../types';
+import { Setting, SettingGroup } from '../../types';
 
-export const useSettings = (): Setting[] => {
-  return [
+export const useSettings = (): SettingGroup[] => {
+  const settings: Setting[] = [
     {
       id: '1',
       code: 'ACTIVE_WIDGETS',
@@ -9,6 +9,8 @@ export const useSettings = (): Setting[] => {
       typeCode: 'LIST_MULTI',
       value: 'Pomodoro,Timer',
       options: ['Pomodoro', 'Timer'],
+      groupId: '1',
+      groupName: 'Widget Settings',
     },
     {
       id: '2',
@@ -17,6 +19,8 @@ export const useSettings = (): Setting[] => {
       typeCode: 'LIST_SINGLE',
       value: 'md',
       options: ['sm', 'md', 'lg', 'xl'],
+      groupId: '2',
+      groupName: 'Layout Settings',
     },
 
     {
@@ -26,6 +30,8 @@ export const useSettings = (): Setting[] => {
       typeCode: 'STRING',
       value: 'Awesome widgets',
       options: [],
+      groupId: '1',
+      groupName: 'Widget Settings',
     },
     {
       id: '3',
@@ -34,6 +40,26 @@ export const useSettings = (): Setting[] => {
       typeCode: 'BOOLEAN',
       value: false,
       options: [],
+      groupId: '3',
+      groupName: 'Feature Settings',
     },
   ];
+
+  const settingGroups: SettingGroup[] = settings.reduce((acc, cur) => {
+    const groupIndex = acc.findIndex((group) => group.groupId === cur.groupId);
+
+    if (groupIndex === -1) {
+      acc.push({
+        groupId: cur.groupId,
+        groupName: cur.groupName,
+        settings: [cur],
+      });
+    } else {
+      acc[groupIndex].settings.push(cur);
+    }
+
+    return acc;
+  }, [] as SettingGroup[]);
+
+  return settingGroups;
 };

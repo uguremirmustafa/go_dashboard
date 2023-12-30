@@ -9,7 +9,7 @@ interface InitialValues {
 }
 
 const initialValues: InitialValues = {
-  mode: 'light',
+  mode: 'dark',
   setMode: () => {},
 };
 

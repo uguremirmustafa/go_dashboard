@@ -25,6 +25,12 @@ export const SettingTypes = [
 
 export type SettingType = (typeof SettingTypes)[number];
 
+export type SettingGroup = {
+  groupId: string;
+  groupName: string;
+  settings: Setting[];
+};
+
 export type Setting = {
   id: string;
   name: string;
@@ -32,6 +38,8 @@ export type Setting = {
   typeCode: SettingType;
   value: unknown;
   options: string[];
+  groupId: string;
+  groupName: string;
 };
 
 export type TypedSetting<T extends SettingType> = Setting & {

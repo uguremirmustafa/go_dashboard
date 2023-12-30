@@ -55,7 +55,7 @@ export const getTheme = (mode: PaletteMode) => {
       ...(mode === 'light'
         ? {
             primary: {
-              main: light.green,
+              main: light.blue,
             },
             secondary: {
               main: light.aqua,
@@ -170,6 +170,18 @@ export const getTheme = (mode: PaletteMode) => {
           },
           inputRoot: {
             fontSize: '14px',
+            position: 'relative',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              backgroundColor: light.blue,
+              opacity: '0.1',
+              zIndex: -1,
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+            },
           },
         },
       },
@@ -180,6 +192,18 @@ export const getTheme = (mode: PaletteMode) => {
         styleOverrides: {
           root: {
             fontSize: '14px',
+            position: 'relative',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              backgroundColor: light.blue,
+              opacity: '0.1',
+              zIndex: -1,
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+            },
           },
         },
       },
@@ -193,6 +217,17 @@ export const getTheme = (mode: PaletteMode) => {
       MuiInputLabel: {
         defaultProps: {
           shrink: true,
+        },
+      },
+      MuiButton: {
+        defaultProps: {
+          disableRipple: false,
+          variant: 'contained',
+        },
+        styleOverrides: {
+          root: {
+            textTransform: 'none',
+          },
         },
       },
     },
