@@ -8,6 +8,7 @@ import SettingsPage from './pages/SettingsPage';
 import JsonComparePage from './pages/widgets/json-compare/JsonComparePage';
 import WidgetsLayout from './components/layout/WidgetsLayout';
 import Base64Resolver from './pages/widgets/base64-resolver/Base64Resolver';
+import JsonViewer from './pages/widgets/json-viewer/JsonViewer';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="settings" element={<SettingsPage />} />
           <Route path="widgets" element={<WidgetsLayout />}>
             <Route path="json-compare" element={<JsonComparePage />} />
+            <Route path="json-viewer" element={<JsonViewer />} />
             <Route path="base64-resolver" element={<Base64Resolver />} />
           </Route>
         </Route>

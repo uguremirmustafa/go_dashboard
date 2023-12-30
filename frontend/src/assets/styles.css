@@ -16,6 +16,13 @@ html[data-theme='light'] {
   --clr-purple: #b16286;
   --clr-aqua: #689d6a;
   --clr-orange: #d65d0e;
+  --clr-redDim: #9d0006;
+  --clr-greenDim: #79740e;
+  --clr-yellowDim: #b57614;
+  --clr-blueDim: #076678;
+  --clr-purpleDim: #8f3f71;
+  --clr-aquaDim: #427b58;
+  --clr-orangeDim: #af3a03;
 }
 html[data-theme='dark'] {
   --clr-bg0: #282828;
@@ -35,8 +42,49 @@ html[data-theme='dark'] {
   --clr-purple: #b16286;
   --clr-aqua: #689d6a;
   --clr-orange: #d65d0e;
+  --clr-redDim: #9d0006;
+  --clr-greenDim: #79740e;
+  --clr-yellowDim: #b57614;
+  --clr-blueDim: #076678;
+  --clr-purpleDim: #8f3f71;
+  --clr-aquaDim: #427b58;
+  --clr-orangeDim: #af3a03;
 }
 
 .iconify {
-  color: var(--clr-fg1);
+  color: var(--clr-fg0) !important;
+}
+
+.cs {
+  overflow-y: auto;
+  position: relative;
+}
+
+.cs::-webkit-scrollbar {
+  display: none;
+}
+.toast {
+  background-color: var(--clr-orange) !important;
+  color: var(--clr-fg0) !important;
+  overflow: hidden;
+}
+.error-toast {
+  background-color: var(--clr-redDim) !important;
+  color: var(--clr-fg2) !important;
+  overflow: hidden;
+}
+.success-toast {
+  background-color: var(--clr-aquaDim) !important;
+  color: var(--clr-fg2) !important;
+  overflow: hidden;
+}
+
+.diff-section {
+  padding: 0.1rem;
+  border-radius: 4px;
+}
+.diff-section:hover {
+  background-color: var(--clr-bg1);
+  color: var(--clr-fg0);
+  transition: ease-in 0.1s color;
 }

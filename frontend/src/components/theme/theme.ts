@@ -19,7 +19,14 @@ const dark = {
   purple: '#B16286',
   aqua: '#689D6A',
   orange: '#D65D0E',
-};
+  redDim: '#9D0006',
+  greenDim: '#79740E',
+  yellowDim: '#B57614',
+  blueDim: '#076678',
+  purpleDim: '#8F3F71',
+  aquaDim: '#427B58',
+  orangeDim: '#AF3A03',
+} as const;
 
 const light = {
   bg0: '#FBF1C7',
@@ -39,14 +46,19 @@ const light = {
   purple: '#B16286',
   aqua: '#689D6A',
   orange: '#D65D0E',
-  // red: '#9D0006',
-  // green: '#79740E',
-  // yellow: '#B57614',
-  // blue: '#076678',
-  // purple: '#8F3F71',
-  // aqua: '#427B58',
-  // orange: '#AF3A03',
-};
+  redDim: '#9D0006',
+  greenDim: '#79740E',
+  yellowDim: '#B57614',
+  blueDim: '#076678',
+  purpleDim: '#8F3F71',
+  aquaDim: '#427B58',
+  orangeDim: '#AF3A03',
+} as const;
+
+export function getColor(colorKey: keyof typeof dark) {
+  const mode = document.documentElement.getAttribute('data-theme') ?? 'dark';
+  return mode === 'dark' ? dark[colorKey] : light[colorKey];
+}
 
 export const getTheme = (mode: PaletteMode) => {
   return createTheme({
@@ -86,7 +98,19 @@ export const getTheme = (mode: PaletteMode) => {
               primary: dark.fg0,
               secondary: dark.fg1,
             },
+            info: {
+              main: dark.blue,
+            },
+            error: {
+              main: dark.red,
+            },
+            success: {
+              main: dark.green,
+            },
           }),
+    },
+    shape: {
+      borderRadius: 2,
     },
     typography: {
       fontFamily: 'Poppins',
@@ -94,11 +118,11 @@ export const getTheme = (mode: PaletteMode) => {
         fontWeight: 400,
       },
       h1: {
-        fontSize: '2rem',
+        fontSize: '1.875rem',
         fontWeight: 700,
       },
       h2: {
-        fontSize: '4rem',
+        fontSize: '1.75rem',
         fontWeight: 700,
       },
       h5: {
@@ -119,6 +143,7 @@ export const getTheme = (mode: PaletteMode) => {
         styleOverrides: {
           root: {
             textTransform: 'none',
+            color: mode === 'dark' ? dark.fg1 : light.fg1,
           },
         },
       },
@@ -245,6 +270,7 @@ export const getTheme = (mode: PaletteMode) => {
         styleOverrides: {
           root: {
             textTransform: 'none',
+            color: mode === 'dark' ? dark.fg1 : light.fg1,
           },
         },
       },

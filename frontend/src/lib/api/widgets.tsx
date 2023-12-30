@@ -11,6 +11,13 @@ export const useWidgets = (): Widget[] => {
     },
     {
       id: '2',
+      name: 'Json Viewer',
+      description: 'Beautiful json',
+      icon: 'mdi:cpu-64-bit',
+      path: 'json-viewer',
+    },
+    {
+      id: '3',
       name: 'Base64 Resolver',
       description: 'See the contents of base64 strings live',
       icon: 'mdi:cpu-64-bit',

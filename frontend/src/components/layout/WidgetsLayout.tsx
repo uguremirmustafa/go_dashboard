@@ -42,7 +42,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
 function WidgetsLayout(): JSX.Element {
   const widgets = useWidgets();
   const navigate = useNavigate();
-  const { pathname } = useLocation();
+  const { pathname, state } = useLocation();
 
   const theme = useTheme();
   const [open, setOpen] = useState(true);
@@ -53,14 +53,26 @@ function WidgetsLayout(): JSX.Element {
           display: 'flex',
           borderBottom: `1px solid ${theme.palette.divider}`,
           alignItems: 'center',
-          px: 1,
         }}
       >
-        <IconButton onClick={() => setOpen((old) => !old)}>
-          <Icon icon={open ? 'line-md:close-small' : 'line-md:menu'} fontSize={28} />
-        </IconButton>
-        <Typography variant="h1" sx={{ p: 2 }}>
-          Widgets
+        <Box
+          sx={{
+            display: 'flex',
+            width: drawerWidth + 1,
+            borderRight: `1px solid ${theme.palette.divider}`,
+            px: 1,
+            alignItems: 'center',
+          }}
+        >
+          <IconButton onClick={() => setOpen((old) => !old)}>
+            <Icon icon={open ? 'line-md:close-small' : 'line-md:menu'} fontSize={28} />
+          </IconButton>
+          <Typography variant="h1" sx={{ p: 2 }}>
+            Widgets
+          </Typography>
+        </Box>
+        <Typography variant="body1" sx={{ px: 2 }}>
+          {state?.name}
         </Typography>
       </Box>
       <Box sx={{ display: 'flex', position: 'relative', height: he }}>
@@ -77,6 +89,7 @@ function WidgetsLayout(): JSX.Element {
               border: 'none',
               overflowX: 'hidden',
               bgcolor: theme.palette.background.default,
+              borderRadius: 0,
             },
           }}
         >
@@ -86,7 +99,7 @@ function WidgetsLayout(): JSX.Element {
                 <ListItem key={x.id}>
                   <ListItemButton
                     selected={pathname.includes(x.path)}
-                    onClick={() => navigate(x.path)}
+                    onClick={() => navigate(x.path, { state: x })}
                   >
                     <ListItemIcon>
                       <Icon icon={x.icon} fontSize={24} />
