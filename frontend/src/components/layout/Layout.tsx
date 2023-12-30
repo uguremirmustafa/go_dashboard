@@ -1,5 +1,5 @@
 import {
-  Container,
+  Box,
   Fade,
   IconButton,
   List,
@@ -14,13 +14,18 @@ import {
 import { Outlet, useNavigate } from 'react-router-dom';
 import React from 'react';
 import { Icon } from '@iconify/react';
-import { PageLink } from '../types';
+import { PageLink } from '../../types';
 
 const LINKS: PageLink[] = [
   {
     name: 'Homepage',
     path: '/',
     icon: 'ion:home-outline',
+  },
+  {
+    name: 'Widgets',
+    path: '/widgets',
+    icon: 'carbon:settings',
   },
   {
     name: 'Settings',
@@ -51,7 +56,11 @@ function Layout(): JSX.Element {
 
   return (
     <>
-      <IconButton aria-describedby={id} onClick={handleClick}>
+      <IconButton
+        aria-describedby={id}
+        onClick={handleClick}
+        sx={{ position: 'absolute', top: 1, left: 1 }}
+      >
         <Icon icon="ri:menu-2-line" />
       </IconButton>
       <Popper
@@ -60,7 +69,7 @@ function Layout(): JSX.Element {
         anchorEl={anchorEl}
         transition
         placement="bottom-end"
-        style={{ zIndex: 1 }}
+        style={{ zIndex: theme.zIndex.drawer + 1 }}
       >
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
@@ -91,9 +100,9 @@ function Layout(): JSX.Element {
           </Fade>
         )}
       </Popper>
-      <Container maxWidth="xl">
+      <Box sx={{ p: 5 }}>
         <Outlet />
-      </Container>
+      </Box>
     </>
   );
 }

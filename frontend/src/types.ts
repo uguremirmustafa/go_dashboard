@@ -54,3 +54,9 @@ export type PageLink = {
   path: string;
   icon: string;
 };
+
+export type Widget = {
+  id: string;
+  name: string;
+  description: string;
+};

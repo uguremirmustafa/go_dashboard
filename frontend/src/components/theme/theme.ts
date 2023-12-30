@@ -77,7 +77,7 @@ export const getTheme = (mode: PaletteMode) => {
             secondary: {
               main: dark.aqua,
             },
-            divider: dark.bg1,
+            divider: dark.bg3,
             background: {
               default: dark.bg0,
               paper: dark.bg1,
@@ -116,8 +116,17 @@ export const getTheme = (mode: PaletteMode) => {
         },
       },
       MuiButtonBase: {
-        defaultProps: {
-          disableRipple: false,
+        styleOverrides: {
+          root: {
+            textTransform: 'none',
+          },
+        },
+      },
+      MuiTab: {
+        styleOverrides: {
+          root: {
+            textTransform: 'none',
+          },
         },
       },
       MuiPaper: {
@@ -221,7 +230,6 @@ export const getTheme = (mode: PaletteMode) => {
       },
       MuiButton: {
         defaultProps: {
-          disableRipple: false,
           variant: 'contained',
         },
         styleOverrides: {
