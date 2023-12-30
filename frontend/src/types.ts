@@ -59,4 +59,6 @@ export type Widget = {
   id: string;
   name: string;
   description: string;
+  icon: string;
+  path: string;
 };

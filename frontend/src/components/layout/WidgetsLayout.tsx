@@ -10,13 +10,14 @@ import {
   ListItem,
   ListItemText,
   ListItemButton,
+  ListItemIcon,
 } from '@mui/material';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useWidgets } from '../../lib/api/widgets';
 import { useState } from 'react';
 import { Icon } from '@iconify/react/dist/iconify.js';
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const he = `calc(100vh - 10rem)`;
 
@@ -41,6 +42,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
 function WidgetsLayout(): JSX.Element {
   const widgets = useWidgets();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const theme = useTheme();
   const [open, setOpen] = useState(true);
@@ -55,7 +57,7 @@ function WidgetsLayout(): JSX.Element {
         }}
       >
         <IconButton onClick={() => setOpen((old) => !old)}>
-          <Icon icon="mdi:menu" fontSize={28} />
+          <Icon icon={open ? 'line-md:close-small' : 'line-md:menu'} fontSize={28} />
         </IconButton>
         <Typography variant="h1" sx={{ p: 2 }}>
           Widgets
@@ -82,7 +84,13 @@ function WidgetsLayout(): JSX.Element {
             {widgets.map((x) => {
               return (
                 <ListItem key={x.id}>
-                  <ListItemButton onClick={() => navigate(x.name.toLowerCase().replace(' ', '-'))}>
+                  <ListItemButton
+                    selected={pathname.includes(x.path)}
+                    onClick={() => navigate(x.path)}
+                  >
+                    <ListItemIcon>
+                      <Icon icon={x.icon} fontSize={24} />
+                    </ListItemIcon>
                     <ListItemText primary={x.name} secondary={x.description} />
                   </ListItemButton>
                 </ListItem>

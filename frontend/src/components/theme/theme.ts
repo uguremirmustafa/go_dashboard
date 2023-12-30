@@ -133,6 +133,11 @@ export const getTheme = (mode: PaletteMode) => {
         defaultProps: {
           variant: 'outlined',
         },
+        styleOverrides: {
+          root: {
+            borderRadius: '0.5rem',
+          },
+        },
       },
       MuiList: {
         defaultProps: {
@@ -142,6 +147,11 @@ export const getTheme = (mode: PaletteMode) => {
       MuiListItemButton: {
         defaultProps: {
           disableRipple: true,
+        },
+        styleOverrides: {
+          root: {
+            borderRadius: '0.5rem',
+          },
         },
       },
       MuiListItemText: {

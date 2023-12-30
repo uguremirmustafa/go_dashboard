@@ -25,7 +25,7 @@ const LINKS: PageLink[] = [
   {
     name: 'Widgets',
     path: '/widgets',
-    icon: 'carbon:settings',
+    icon: 'solar:widget-2-broken',
   },
   {
     name: 'Settings',
