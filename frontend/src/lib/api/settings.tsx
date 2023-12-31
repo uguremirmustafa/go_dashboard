@@ -22,7 +22,16 @@ export const useSettings = (): SettingGroup[] => {
       groupId: '2',
       groupName: 'Layout Settings',
     },
-
+    {
+      id: '3',
+      code: 'WIDGETS_ENABLED',
+      name: 'Widgets enabled',
+      typeCode: 'BOOLEAN',
+      value: false,
+      options: [],
+      groupId: '3',
+      groupName: 'Feature Settings',
+    },
     {
       id: '4',
       code: 'WIDGET_SECTION_TITLE',
@@ -34,14 +43,14 @@ export const useSettings = (): SettingGroup[] => {
       groupName: 'Widget Settings',
     },
     {
-      id: '3',
-      code: 'WIDGETS_ENABLED',
-      name: 'Widgets enabled',
-      typeCode: 'BOOLEAN',
-      value: false,
+      id: '5',
+      code: 'DEVPLATFORM_TOKEN',
+      name: 'Devplatform token',
+      typeCode: 'STRING',
+      value: '',
       options: [],
-      groupId: '3',
-      groupName: 'Feature Settings',
+      groupId: '4',
+      groupName: 'Auth',
     },
   ];
 

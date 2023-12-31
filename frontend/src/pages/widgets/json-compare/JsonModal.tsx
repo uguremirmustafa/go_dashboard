@@ -42,6 +42,7 @@ function JsonModal(props: IProps): JSX.Element {
           multiline
           placeholder="Insert/paste your first text file here"
           sx={{ mt: 2 }}
+          InputProps={{ sx: { fontFamily: 'monospace' }, spellCheck: 'false' }}
         />
       </Grid>
       <Grid item xs={12} md={6}>
@@ -56,6 +57,7 @@ function JsonModal(props: IProps): JSX.Element {
           placeholder="Insert/paste your second text file here"
           sx={{ mt: 2 }}
           color="info"
+          InputProps={{ sx: { fontFamily: 'monospace' }, spellCheck: 'false' }}
         />
       </Grid>
       <Grid item xs={12}>
