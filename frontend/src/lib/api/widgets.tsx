@@ -18,10 +18,17 @@ export const useWidgets = (): Widget[] => {
     },
     {
       id: '3',
-      name: 'Base64 Resolver',
+      name: 'Image Base64 Encoder',
+      description: 'Upload your image and get the base64 in return',
+      icon: 'mdi:cpu-64-bit',
+      path: 'img-base64-encoder',
+    },
+    {
+      id: '4',
+      name: 'Image Base64 Resolver',
       description: 'See the contents of base64 strings live',
       icon: 'mdi:cpu-64-bit',
-      path: 'base64-resolver',
+      path: 'img-base64-resolver',
     },
   ];
 

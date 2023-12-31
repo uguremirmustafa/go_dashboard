@@ -138,6 +138,11 @@ export const getTheme = (mode: PaletteMode) => {
           variant: 'outlined',
           size: 'small',
         },
+        styleOverrides: {
+          root: {
+            borderRadius: '0.5rem !important',
+          },
+        },
       },
       MuiButtonBase: {
         styleOverrides: {
@@ -271,6 +276,14 @@ export const getTheme = (mode: PaletteMode) => {
           root: {
             textTransform: 'none',
             color: mode === 'dark' ? dark.fg1 : light.fg1,
+            borderRadius: '0.5rem !important',
+          },
+        },
+      },
+      MuiInputBase: {
+        styleOverrides: {
+          root: {
+            borderRadius: '0.5rem !important',
           },
         },
       },
