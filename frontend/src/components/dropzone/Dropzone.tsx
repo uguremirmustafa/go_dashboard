@@ -6,6 +6,7 @@ import { useDropzone } from 'react-dropzone';
 
 export interface FileWithUrl extends File {
   url: string;
+  base64: string;
 }
 
 interface IProps {
@@ -18,14 +19,23 @@ function Dropzone(props: IProps): JSX.Element {
 
   const onDrop = useCallback((acceptedFiles: any) => {
     if (acceptedFiles?.length) {
-      setFiles((old) => [
-        ...acceptedFiles.map((file: File) =>
-          Object.assign(file, { url: URL.createObjectURL(file) })
-        ),
-        ...old,
-      ]);
+      acceptedFiles.forEach((file: File) => {
+        const reader = new FileReader();
+
+        reader.onabort = () => console.log('file reading was aborted');
+        reader.onerror = () => console.log('file reading has failed');
+        reader.onload = () => {
+          // Do whatever you want with the file contents
+          const base64 = reader.result as string;
+          const url = URL.createObjectURL(file) as string;
+          const newFile = Object.assign(file, { url, base64 });
+          setFiles((old) => [...old, newFile]);
+        };
+        reader.readAsDataURL(file);
+      });
     }
   }, []);
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
